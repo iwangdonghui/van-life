@@ -24,6 +24,7 @@ function App() {
         <Route path="/vans" element={<Vans />} />
         <Route path='/vans/:id' element={<VanDetail />} />
       </Routes>
+      <footer>&copy; 2024 #VANLIFE</footer>
     </BrowserRouter>
   )
 }

@@ -62,6 +62,13 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
+footer {
+    background-color: #252525;
+    text-align: center;
+    color: #AAAAAA;
+    padding: 2em;
+}
+
 /*** HOME PAGE ***/
 .home-container {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.png") no-repeat center center;
@@ -106,6 +113,7 @@ header a:hover {
 
 
 /*** ABOUT PAGE ***/
+
 .about-hero-image {
     max-width: 100%;
 }
@@ -155,6 +163,10 @@ header a:hover {
     justify-items: center;
     gap: 34px;
     margin-top: 57px;
+}
+
+.van-tile {
+    padding-bottom: 1em;
 }
 
 .van-tile a {
@@ -223,4 +235,57 @@ header a:hover {
 
 i[class*='van-type-'] {
     padding: 7px 14px;
+}
+
+.van-detail-container {
+    padding: 27px;
+}
+
+.van-detail-container .back-button {
+    color: black;
+    text-decoration: none;
+}
+
+/* .van-detail-container .back-button:visited {
+    
+} */
+
+.van-detail-container .back-button span {
+    text-decoration: underline;
+}
+
+.van-detail {
+    display: flex;
+    flex-direction: column;
+    color: #161616;
+}
+
+.van-detail img {
+    border-radius: 5px;
+    margin-block: 47px;
+}
+
+.van-detail h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.van-detail > i {
+    align-self: flex-start;
+}
+
+.van-detail .van-price {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.van-detail .van-price span {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.van-detail .link-button {
+    background-color: #FF8C38;
+    color: white;
+    font-size: 1.125rem;
 }

@@ -18,8 +18,10 @@ body {
   scrollbar-width: none;
 }
 
+
+
 .site-wrapper {
-    min-height: 100vh;
+    min-height: 100vh; /* make sure the footer stick to the bottom*/
     display: flex;
     flex-direction: column;
 }

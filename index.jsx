@@ -31,7 +31,6 @@ function App() {
           
         </Route>
       </Routes>
-      <footer>&copy; 2024 #VANLIFE</footer>
     </BrowserRouter>
   )
 }

@@ -18,6 +18,12 @@ body {
   scrollbar-width: none;
 }
 
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 header {
     height: 110px;
     display: flex;
@@ -62,11 +68,20 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
+main {
+    margin-bottom: 84px;
+}
+
 footer {
-    background-color: #252525;
-    text-align: center;
+    height: 74px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: #161616;
     color: #AAAAAA;
-    padding: 2em;
+    margin-top: auto;
+    font-weight: 500;
 }
 
 /*** HOME PAGE ***/

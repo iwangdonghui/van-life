@@ -20,7 +20,7 @@ export default function HostVanDetail (){
         <section>
             <Link 
                 to=".."
-                relative="path" // make sure the link will not go back to parent path: /host
+                relative="path" // make sure the link will not go back to parent path: /host, but go to the relative route host/vans
                 className="back-button"
             >&larr; <span>Back to all vans</span></Link>
 

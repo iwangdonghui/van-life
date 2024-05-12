@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { 
+  createBrowserRouter, 
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Link
+} from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from './pages/Vans/Vans';
@@ -20,13 +26,10 @@ import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 
 
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} /> 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} /> 
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
           <Route path='/vans/:id' element={<VanDetail />} />
@@ -41,10 +44,15 @@ function App() {
               <Route path="pricing" element={<HostVanPricing />} />
             </Route>
           </Route>
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+)
+
+
+function App() {
+  return (
+    <RouterProvider router={router} />
   )
 }
 

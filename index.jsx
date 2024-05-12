@@ -16,6 +16,7 @@ import Income from './pages/Host/Income';
 import Reviews from './pages/Host/Reviews';
 import Layout from './components/Layout';
 import HostLayout from './components/HostLayout';
+import Error from './components/Error';
 
 import "./server"
 import HostVans from './pages/Host/HostVans';
@@ -31,7 +32,12 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
         <Route index element={<Home />} /> 
           <Route path="/about" element={<About />} />
-          <Route path="/vans" element={<Vans />} loader={vansloader} />
+          <Route 
+            path="/vans" 
+            element={<Vans />} 
+            loader={vansloader} 
+            errorElement={<Error />}
+          />
           <Route path='/vans/:id' element={<VanDetail />} />
           <Route path='host' element={<HostLayout />}>
             <Route index element={<Dashboard />} />

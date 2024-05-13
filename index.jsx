@@ -14,6 +14,7 @@ import VanDetail from './pages/Vans/VanDetail';
 import Dashboard from './pages/Host/Dashboard';
 import Income from './pages/Host/Income';
 import Reviews from './pages/Host/Reviews';
+import Login from './pages/Login';
 import Layout from './components/Layout';
 import HostLayout from './components/HostLayout';
 import Error from './components/Error';
@@ -31,25 +32,26 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
         <Route index element={<Home />} /> 
-          <Route path="/about" element={<About />} />
-          <Route 
-            path="/vans" 
-            element={<Vans />} 
-            loader={vansloader} 
-            errorElement={<Error />}
-          />
-          <Route path='/vans/:id' element={<VanDetail />} />
-          <Route path='host' element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path='income' element={<Income />} />
-            <Route path='reviews' element={<Reviews />} />
-            <Route path='vans' element={<HostVans />} />
-            <Route path='vans/:id' element={<HostVanDetail />} >
-              <Route index element={<HostVanInfo />} />
-              <Route path="photos" element={<HostVanPhotos />} />
-              <Route path="pricing" element={<HostVanPricing />} />
-            </Route>
+        <Route path="/about" element={<About />} />
+        <Route path='login' element={<Login />} />
+        <Route 
+          path="/vans" 
+          element={<Vans />} 
+          loader={vansloader} 
+          errorElement={<Error />}
+        />
+        <Route path='/vans/:id' element={<VanDetail />} />
+        <Route path='host' element={<HostLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path='income' element={<Income />} />
+          <Route path='reviews' element={<Reviews />} />
+          <Route path='vans' element={<HostVans />} />
+          <Route path='vans/:id' element={<HostVanDetail />} >
+            <Route index element={<HostVanInfo />} />
+            <Route path="photos" element={<HostVanPhotos />} />
+            <Route path="pricing" element={<HostVanPricing />} />
           </Route>
+        </Route>
         <Route path="*" element={<NotFound />} />
     </Route>
   )

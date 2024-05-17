@@ -1,9 +1,13 @@
 import React from "react";
-import { useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate, useLoaderData, Form } from "react-router-dom";
 import { loginUser } from "../api"
 
 export function loader ({ request }) {
     return new URL(request.url).searchParams.get("message")
+}
+
+export async function action () {
+    console.log("action function")
 }
 
 export default function Login () {
@@ -11,13 +15,16 @@ export default function Login () {
     const [status, setStatus] = React.useState('idle')
     const [error, setError] = React.useState(null)
     const message = useLoaderData()
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
         setStatus('submitting')
         setError(null)
         loginUser(loginFormData)
-         .then(data => console.log(data))
+         .then(data => {
+            navigate('/host', {replace: true})
+         })
          .catch(err => setError(err))
          .finally(() => setStatus('idle'))
     }
@@ -36,7 +43,7 @@ export default function Login () {
             {message && <p className="red">{message}</p>}
             {error && <p className="red">{error.message}</p>}
 
-            <form onSubmit={handleSubmit} className="login-form">
+            <Form method="post" className="login-form">
                 <input 
                     name="email"
                     onChange={handleChange}
@@ -54,7 +61,7 @@ export default function Login () {
                 <button disabled={status === 'submitting'}>
                   {status === 'submitting' ? "Logging in..." : "Log in"}
                 </button>
-            </form>
+            </Form>
         </div>
     )
 }

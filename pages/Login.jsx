@@ -46,12 +46,16 @@ export default function Login () {
             {message && <p className="red">{message}</p>}
             {error && <p className="red">{error.message}</p>}
 
-            <Form method="post" className="login-form">
+            <Form 
+                method="post" 
+                className="login-form" 
+                replace
+            >
                 <input 
                     name="email"
                     type="email"
                     placeholder="Email address"
-                    replace
+                    
                 />
                 <input 
                     name="password"

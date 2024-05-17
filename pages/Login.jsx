@@ -6,12 +6,17 @@ export function loader ({ request }) {
     return new URL(request.url).searchParams.get("message")
 }
 
-export async function action () {
-    console.log("action function")
+export async function action ({ request }) {
+    const formData = await request.formData()
+    const email = formData.get("email")
+    const password = formData.get("password")
+    const data = await loginUser({ email, password })
+    console.log(data)
+     
+    return null
 }
 
 export default function Login () {
-    const [loginFormData, setLoginFormData] = React.useState({password: "", email: ""})
     const [status, setStatus] = React.useState('idle')
     const [error, setError] = React.useState(null)
     const message = useLoaderData()
@@ -29,13 +34,6 @@ export default function Login () {
          .finally(() => setStatus('idle'))
     }
 
-    function handleChange(e) {
-        const { name, value } = e.target
-        setLoginFormData(prev => ({
-            ...prev, 
-            [name]: value
-        }))
-    }
 
     return (
         <div className="login-container">
@@ -46,17 +44,14 @@ export default function Login () {
             <Form method="post" className="login-form">
                 <input 
                     name="email"
-                    onChange={handleChange}
                     type="email"
                     placeholder="Email address"
-                    value={loginFormData.email}
+                
                 />
                 <input 
                     name="password"
-                    onChange={handleChange}
                     type="password"
                     placeholder="Password"
-                    value={loginFormData.password}
                 />
                 <button disabled={status === 'submitting'}>
                   {status === 'submitting' ? "Logging in..." : "Log in"}

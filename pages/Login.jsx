@@ -1,5 +1,10 @@
 import React from "react";
-import { useNavigate, useLoaderData, Form } from "react-router-dom";
+import { 
+    useNavigate, 
+    useLoaderData, 
+    Form,
+    redirect
+ } from "react-router-dom";
 import { loginUser } from "../api"
 
 export function loader ({ request }) {
@@ -13,7 +18,7 @@ export async function action ({ request }) {
     const data = await loginUser({ email, password })
     localStorage.setItem("loggedin", true)
      
-    return null
+    return redirect("/host")
 }
 
 export default function Login () {
@@ -27,8 +32,8 @@ export default function Login () {
         setStatus('submitting')
         setError(null)
         loginUser(loginFormData)
-         .then(data => {
-            navigate('/host', {replace: true})
+          .then(data => {
+            navigate('/host', { replace: true })
          })
          .catch(err => setError(err))
          .finally(() => setStatus('idle'))

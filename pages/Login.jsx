@@ -51,7 +51,7 @@ export default function Login () {
                     name="email"
                     type="email"
                     placeholder="Email address"
-                
+                    replace
                 />
                 <input 
                     name="password"

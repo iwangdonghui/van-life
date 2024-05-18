@@ -20,7 +20,7 @@ createServer({
     routes() {
         this.namespace = "api"
         this.logging = false
-        // this.timing = 1000
+        this.timing = 1000 // it depends what kind of UX you want, a delay may not needed
 
         this.get("/vans", (schema, request) => {
             return schema.vans.all()

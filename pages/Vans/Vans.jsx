@@ -5,6 +5,7 @@ import {
   useLoaderData,
   defer,
   Await,
+  
 } from "react-router-dom";
 import { getVans } from "../../api";
 
@@ -14,7 +15,6 @@ export function loader() {
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [error, setError] = React.useState(null);
   const dataPromise = useLoaderData();
 
   const typeFilter = searchParams.get("type");
@@ -31,9 +31,9 @@ export default function Vans() {
   }
 
 
-  if (error) {
-    return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
-  }
+  // if (error) {
+  //   return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
+  // }
 
   function renderVanElements(vans) {  // refactor the all the element for a neater view
     const displayedVans = typeFilter
